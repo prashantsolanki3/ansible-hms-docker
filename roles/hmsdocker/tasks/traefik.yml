@@ -39,10 +39,10 @@
         - item.enabled is defined and item.enabled
   when: traefik_ext_hosts_enabled
 
-- name: Ensure disabled Traefik static file configs are removed
-  ansible.builtin.file:
-    path: "{{ traefik_additional_routes_dir.path }}/{{ item.friendly_name | map('regex_replace', regex, replace) | list | join }}.yml"
-    state: absent
-  with_items: "{{ traefik_ext_hosts_list }}"
-  when: 
-    - not item.enabled or not traefik_ext_hosts_enabled
+#- name: Ensure disabled Traefik static file configs are removed
+#  ansible.builtin.file:
+#    path: "{{ traefik_additional_routes_dir.path }}/{{ item.friendly_name | map('regex_replace', regex, replace) | list | join }}.yml"
+#    state: absent
+#  with_items: "{{ traefik_ext_hosts_list }}"
+#  when: 
+#    - not item.enabled or not traefik_ext_hosts_enabled
