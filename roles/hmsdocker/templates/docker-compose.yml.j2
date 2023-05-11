@@ -19,7 +19,7 @@ services:
     {% endif %}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - {{ hms_docker_apps_path }}/portainer/config:/data
+      - {{ hms_docker_apps_path }}/portainer:/data
     {% if traefik_enabled_portainer %}
     labels:
       - traefik.enable=true
@@ -243,7 +243,7 @@ services:
       - PGID={{ container_gid }}
       - TZ={{ container_timezone }}
     volumes:
-      - {{ hms_docker_apps_path }}/nzbget/config:/config
+      - {{ hms_docker_apps_path }}/nzbget:/config
     {% if nzbget_enable_downloads_mount %}
       - {{ hms_docker_apps_path }}/nzbget/downloads:/data/usenet
     {% endif %}
@@ -282,7 +282,7 @@ services:
       - PGID={{ container_gid }}
       - TZ={{ container_timezone }}
     volumes:
-      - {{ hms_docker_apps_path }}/sabnzbd/config:/config
+      - {{ hms_docker_apps_path }}/sabnzbd:/config
       {% if sabnzbd_enable_downloads_mount %}
       - {{ hms_docker_apps_path }}/sabnzbd/downloads:/downloads
       - {{ hms_docker_apps_path }}/sabnzbd/incomplete-downloads:/incomplete-downloads
@@ -328,7 +328,7 @@ services:
       - '{{ transmission_dns_1 }}'
       - '{{ transmission_dns_2 }}'
     volumes:
-      - {{ hms_docker_apps_path }}/transmission/config:/data/transmission-home
+      - {{ hms_docker_apps_path }}/transmission:/data/transmission-home
     {% if transmission_use_nas_enabled %}
       - {{ hms_docker_mount_path }}/apps/transmission/torrents:/data/torrents
     {% elif transmission_custom_download_path_enabled %}
@@ -411,7 +411,7 @@ services:
       - PGID={{ container_gid }}
       - TZ={{ container_timezone }}
     volumes:
-      - {{ hms_docker_apps_path }}/requestrr/config:/root/config
+      - {{ hms_docker_apps_path }}/requestrr:/root/config
     {% if expose_ports_enabled_requestrr %}
     ports:
       - 4545:4545
@@ -448,7 +448,7 @@ services:
       - PGID={{ container_gid }}
       - TZ={{ container_timezone }}
     volumes:
-      - {{ hms_docker_apps_path }}/prowlarr/config:/config
+      - {{ hms_docker_apps_path }}/prowlarr:/config
     {% if expose_ports_enabled_prowlarr %}
     ports:
       - 9696:9696
@@ -497,7 +497,7 @@ services:
         {% endif %}
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/sonarr/config:/config
+      - {{ hms_docker_apps_path }}/sonarr:/config
     {% if transmission_use_nas_enabled %}
       - {{ hms_docker_mount_path }}/apps/transmission/torrents:/data/torrents
     {% elif transmission_custom_download_path_enabled %}
@@ -547,7 +547,7 @@ services:
         {% endif %}
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/sonarr-{{ separate_4k_instances_suffix }}/config:/config
+      - {{ hms_docker_apps_path }}/sonarr-{{ separate_4k_instances_suffix }}:/config
     {% if transmission_use_nas_enabled %}
       - {{ hms_docker_mount_path }}/apps/transmission/torrents:/data/torrents
     {% elif transmission_custom_download_path_enabled %}
@@ -597,7 +597,7 @@ services:
         {% endif %}
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/radarr/config:/config
+      - {{ hms_docker_apps_path }}/radarr:/config
     {% if transmission_use_nas_enabled %}
       - {{ hms_docker_mount_path }}/apps/transmission/torrents:/data/torrents
     {% elif transmission_custom_download_path_enabled %}
@@ -647,7 +647,7 @@ services:
         {% endif %}
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/radarr-{{ separate_4k_instances_suffix }}/config:/config
+      - {{ hms_docker_apps_path }}/radarr-{{ separate_4k_instances_suffix }}:/config
     {% if transmission_use_nas_enabled %}
       - {{ hms_docker_mount_path }}/apps/transmission/torrents:/data/torrents
     {% elif transmission_custom_download_path_enabled %}
@@ -688,7 +688,7 @@ services:
       - PGID={{ container_gid }}
       - TZ={{ container_timezone }}
     volumes:
-      - {{ hms_docker_apps_path }}/bazarr/config:/config
+      - {{ hms_docker_apps_path }}/bazarr:/config
       - {{ hms_docker_media_path }}:/data/media
     {% if nas_enable_additional_paths %}
         {% for path in nas_client_remote_additional_paths %}
@@ -738,7 +738,7 @@ services:
         {% endif %}
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/overseerr/config:/config
+      - {{ hms_docker_apps_path }}/overseerr:/config
     {% if expose_ports_enabled_overseerr %}
     ports:
       - 5055:5055
@@ -785,7 +785,7 @@ services:
     runtime: nvidia
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/plex/config:/config
+      - {{ hms_docker_apps_path }}/plex:/config
       # temp folder for Plex transcoding
       - {{ plex_transcode_folder }}:/transcode
       # media folder where all movies and series are stored
@@ -843,7 +843,7 @@ services:
       - 8181:8181
     {% endif %}
     volumes:
-      - {{ hms_docker_apps_path }}/tautulli/config:/config
+      - {{ hms_docker_apps_path }}/tautulli:/config
       # Plex logs location
       - {{ hms_docker_apps_path }}/plex/config/Library/Application Support/Plex Media Server/Logs:/plex_logs:ro
 {% endif %}
