@@ -327,6 +327,8 @@ services:
     dns:
       - '{{ transmission_dns_1 }}'
       - '{{ transmission_dns_2 }}'
+    devices:
+      - /dev/net/tun
     volumes:
       - {{ hms_docker_apps_path }}/transmission:/data/transmission-home
     {% if transmission_use_nas_enabled %}
