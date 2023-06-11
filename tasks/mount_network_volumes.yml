@@ -1,0 +1,79 @@
+---
+- name: Install s3fs
+  package:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - s3fs
+  become: true
+
+
+- name: Ensure mount directories
+  stat:
+    path: "{{ item.mount_path }}"
+  register: mount_dir_stat
+  with_items: "{{ mounts }}"
+  tags: ['dir-structure', 'mounts']
+
+- name: Create mount directories
+  file:
+    path: "{{ item.mount_path }}"
+    state: directory
+    mode: '{{ item.dir_mode | default("0755") }}'
+    owner: "{{ item.owner | default(default_volume_owner) }}"
+    group: "{{ item.group | default(default_volume_group) }}"
+  with_items: "{{ mounts }}"
+  loop_control:
+    index_var: item_idx
+  when: not mount_dir_stat.results[item_idx].stat.exists
+  tags: ['dir-structure', 'mounts']
+
+- name: Add GlusterFS volumes to fstab
+  lineinfile:
+    path: "/etc/fstab"
+    line: "{{ item.server | default(default_glusterfs_server) }}:/{{ item.name }} {{ item.mount_path }} glusterfs defaults,_netdev 0 0"
+    state: "{{ item.config_state | default('present') }}"
+  when: 
+    - item.type == "glusterfs"
+  with_items: "{{ mounts }}"
+  tags: ['glusterfs', 'fstab']
+
+- name: Add CIFS volumes to fstab
+  lineinfile:
+    path: "/etc/fstab"
+    line : "//{{ item.server | default(default_cifs_server) }}/{{ item.name }} {{ item.mount_path }} cifs vers=3.0,credentials={{ item.credentials | default('/home/'~ansible_user~'/.cifscredentials') }},file_mode={{ item.file_mode | default('0755') }},dir_mode={{ item.dir_mode | default('0755') }},uid={{ item.owner | default(default_volume_owner) }},gid={{ item.group | default(default_volume_group) }},nofail 0 0"
+    state: "{{ item.config_state | default('present') }}"
+  when: 
+    - item.type == "cifs"
+  with_items: "{{ mounts }}"
+  tags: ['cifs', 'fstab']
+
+- name: Add S3FS Buckets to fstab
+  lineinfile:
+    path: "/etc/fstab"
+    line: "{{ item.name }} {{ item.mount_path }} fuse.s3fs _netdev,allow_other,use_cache=/tmp,url=https://s3.{{item.region|default(default_aws_region)}}.amazonaws.com,uid={{ item.owner | default(default_volume_owner) }},gid={{ item.group | default(default_volume_group) }} 0 0"
+    state: "{{ item.config_state | default('present') }}"
+  when: 
+    - item.type == "s3fs"
+  with_items: "{{ mounts }}"
+  tags: ['s3fs', 'fstab']
+
+- name: Mount Volumes
+  command: mount {{ item.mount_path }}
+  when: item.mount == true
+  run_once: true
+  ignore_errors: true
+  with_items: "{{ mounts }}"
+  tags: ['dir-structure', 'mount']
+
+# - name: Create Home User directory
+#   with_items: "{{ mounts }}"
+#   when: 
+#     - item.home_mount is defined       
+#     - item.home_mount == true
+#   file:
+#     path: "{{ item.mount_path }}/{{ ansible_user | default('ubuntu') }}"
+#     state: directory
+#     mode: '0755'
+#     owner: '{{ ansible_user }}'
+#     group: '{{ ansible_user }}'
