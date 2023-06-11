@@ -35,7 +35,7 @@ plex_advertise_ip: "{{ ansible_default_ipv4.address }}"
 project_name: hms-docker
 
 # Where container data and configs are stored // default: "/opt/{{ project_name }}"
-hms_docker_data_path: "/opt/{{ project_name }}"
+hms_docker_data_path: "${HOME}/{{ project_name }}"
 
 # Where the container data is stored // default: "{{ hms_docker_data_path }}/apps"
 hms_docker_apps_path: "{{ hms_docker_data_path }}/apps"
