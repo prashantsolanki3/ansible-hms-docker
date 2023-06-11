@@ -7,6 +7,10 @@
   ansible.builtin.command: docker exec transmission curl -s icanhazip.com
   register: vpn_public_ip
   changed_when: false
+  until: vpn_public_ip is not failed
+  retries: 10
+  delay: 10
+
 
 - name: Ensure public IP and transmission VPN public IP are different.
   ansible.builtin.debug:
