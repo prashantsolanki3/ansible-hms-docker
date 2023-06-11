@@ -339,6 +339,7 @@ services:
       - {{ hms_docker_apps_path }}/transmission/torrents:/data/torrents
     {% endif %}
     environment:
+      - CREATE_TUN_DEVICE=false
       - OPENVPN_PROVIDER=${VPN_PROVIDER}
       - OPENVPN_USERNAME=${VPN_USER}
       - OPENVPN_PASSWORD=${VPN_PASS}
