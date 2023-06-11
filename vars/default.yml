@@ -54,11 +54,11 @@ hms_docker_library_folders:
   [
     {
       type: "movies",
-      folder_name: "Movies"
+      folder_name: "movies"
     },
     {
       type: "tv_shows",
-      folder_name: "TV_Shows"
+      folder_name: "tv_shows"
     },
   ]
 
@@ -77,7 +77,7 @@ hms_docker_domain: home.local
 container_enable_auto_updates: yes
 
 # The timezone to use for the containers // default: "America/New_York"
-container_timezone: America/New_York
+container_timezone: Australia/Melbourne
 
 # User and Group ID's to use for the running processes in the containers (may cause or be the cause of permissions issues)
 #  default: "1234"
@@ -200,7 +200,7 @@ traefik_ssl_letsencrypt_email: ""
 #######################################################################
 ### Tautulli settings
 # Downloads and includes the JBOPS scripts from https://github.com/blacktwin/JBOPS to the Tautulli container
-tautulli_jbops_enabled: false
+tautulli_jbops_enabled: true
 
 ### End of Tautulli settings
 #######################################################################
