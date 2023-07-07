@@ -99,8 +99,8 @@
 
 - name: Ensure Cloudflared Tunnel credentials
   ansible.builtin.template:
-    src: cloudflared_credentials.yml.j2
-    dest: "{{ hms_docker_apps_path }}/cloudflared/config/{{cloudflare_tunnel_id}}.yml"
+    src: cloudflared_credentials.json.j2
+    dest: "{{ hms_docker_apps_path }}/cloudflared/config/{{cloudflare_tunnel_id}}.json"
     group: docker
     mode: 0644
     backup: yes
