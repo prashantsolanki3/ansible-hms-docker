@@ -889,6 +889,23 @@ services:
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
 {% endif %}
 
+{% if cloudflare_tunnel_enabled and cloudflare_tunnel_name != "" %}
+  # Cloudflare Tunnel container
+  cloudflare-tunnel:
+    image: erisamoe/cloudflared
+    container_name: cloudflare-tunnel
+    restart: '{{ container_restart_policy }}'
+    networks:
+      - "traefik_net"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+    volimes:
+      - {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared
+    command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME}
+{% endif %}
+
 {% if container_enabled_tdarr %}
   # tdarr container, transcoding
   tdarr:

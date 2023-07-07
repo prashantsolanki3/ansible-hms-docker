@@ -1,0 +1,13 @@
+tunnel: {{ cloudflare_tunnel_id }}
+credentials-file: /etc/cloudflared/{{ cloudflare_tunnel_id }}.json
+originRequest: # Top-level configuration
+  connectTimeout: 30s
+
+ingress:
+  - hostname: plex10.{{ cloudflare_tunnel_name }}
+    service: http://plex:32400
+  - hostname: overseerr10.{{ cloudflare_tunnel_name }}
+    service: http://overseerr:5055
+  - hostname: sonarr10.{{ cloudflare_tunnel_name }}
+    service: http://sonarr:8989
+  - service: http_status:404

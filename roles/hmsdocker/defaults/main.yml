@@ -408,14 +408,14 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: traefik
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
   sonarr:
     enabled: yes
     proxy_host_rule: sonarr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -423,7 +423,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: radarr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -431,7 +431,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: bazarr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -439,7 +439,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: transmission
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -447,7 +447,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: portainer
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: oauth2
     expose_to_public: no
@@ -455,7 +455,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: overseerr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -463,7 +463,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: prowlarr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -471,7 +471,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: requestrr
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -479,7 +479,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: plex
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -487,7 +487,7 @@ hms_docker_container_map:
     enabled: yes
     proxy_host_rule: tautulli
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -495,7 +495,7 @@ hms_docker_container_map:
     enabled: no
     proxy_host_rule: nzbget
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -503,7 +503,7 @@ hms_docker_container_map:
     enabled: no
     proxy_host_rule: sabnzbd
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
@@ -511,15 +511,23 @@ hms_docker_container_map:
     enabled: no
     proxy_host_rule: authentik
     directory: yes
-    traefik: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
   tdarr:
-    enabled: no
+    enabled: yes
     proxy_host_rule: tdarr
     directory: yes
-    traefik: yes
+    traefik: no
+    authentik: no
+    authentik_provider_type: proxy
+    expose_to_public: no
+  cloudflared:
+    enabled: yes
+    proxy_host_rule: cloudflared
+    directory: yes
+    traefik: no
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no

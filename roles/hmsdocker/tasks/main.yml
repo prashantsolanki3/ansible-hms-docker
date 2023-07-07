@@ -87,6 +87,38 @@
   - authentik_pgu: "{{ authentik_old_pg_user if authentik_old_pg_user is defined and authentik_old_pg_user != '' else authentik_pg_user }}"
   - authentik_pgdb: "{{ authentik_old_pg_db if authentik_old_pg_db is defined and authentik_old_pg_db != '' else authentik_pg_db }}"
 
+- name: Ensure Cloudflared Tunnel config
+  ansible.builtin.template:
+    src: cloudflared/config.yml.j2
+    dest: "{{ hms_docker_data_path }}/cloudflared/config/config.yml"
+    group: docker
+    mode: 0644
+    backup: yes
+    lstrip_blocks: yes
+    trim_blocks: yes
+
+- name: Ensure Cloudflared Tunnel credentials
+  ansible.builtin.template:
+    src: cloudflared/credentials.yml.j2
+    dest: "{{ hms_docker_data_path }}/cloudflared/config/{{cloudflare_tunnel_id}}.yml"
+    group: docker
+    mode: 0644
+    backup: yes
+    lstrip_blocks: yes
+    trim_blocks: yes
+
+
+- name: Ensure Cloudflared Tunnel certificate
+  ansible.builtin.template:
+    src: cloudflared/cert.pem.j2
+    dest: "{{ hms_docker_data_path }}/cloudflared/config/cert.pem"
+    group: docker
+    mode: 0644
+    backup: yes
+    lstrip_blocks: yes
+    trim_blocks: yes
+
+
 - name: Ensure docker-compose.yml file.
   ansible.builtin.template:
     src: docker-compose.yml.j2
