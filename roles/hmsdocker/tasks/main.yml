@@ -90,7 +90,7 @@
 - name: Ensure Cloudflared Tunnel config
   ansible.builtin.template:
     src: cloudflared/config.yml.j2
-    dest: "{{ hms_docker_data_path }}/cloudflared/config/config.yml"
+    dest: "{{ hms_docker_apps_path }}/cloudflared/config/config.yml"
     group: docker
     mode: 0644
     backup: yes
@@ -100,7 +100,7 @@
 - name: Ensure Cloudflared Tunnel credentials
   ansible.builtin.template:
     src: cloudflared/credentials.yml.j2
-    dest: "{{ hms_docker_data_path }}/cloudflared/config/{{cloudflare_tunnel_id}}.yml"
+    dest: "{{ hms_docker_apps_path }}/cloudflared/config/{{cloudflare_tunnel_id}}.yml"
     group: docker
     mode: 0644
     backup: yes
@@ -111,7 +111,7 @@
 - name: Ensure Cloudflared Tunnel certificate
   ansible.builtin.template:
     src: cloudflared/cert.pem.j2
-    dest: "{{ hms_docker_data_path }}/cloudflared/config/cert.pem"
+    dest: "{{ hms_docker_apps_path }}/cloudflared/config/cert.pem"
     group: docker
     mode: 0644
     backup: yes
