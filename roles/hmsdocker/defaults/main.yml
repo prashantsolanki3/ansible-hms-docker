@@ -219,12 +219,12 @@ cloudflare_tunnel_enabled: no
 # Be sure to only add the actual token, it will be a very long string of random characters
 cloudflare_tunnel_token: ""
 
-{# cloudflare_tunnel_name: ""
-cloudflare_tunnel_id: ""
+# cloudflare_tunnel_name: ""
+# cloudflare_tunnel_id: ""
 
 # Base64 Encoded cert.pem file
-cloudflare_tunnel_cert: ""
-cloudflare_tunnel_credentials: "" #}
+# cloudflare_tunnel_cert: ""
+# cloudflare_tunnel_credentials: ""
 
 ## DDNS
 # Enables or disables the Cloudflare DDNS container // default: "no"
