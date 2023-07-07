@@ -901,8 +901,8 @@ services:
       driver: json-file
       options:
         max-size: 10m
-    volimes:
-      - {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared
+    volumes:
+      - {{ hms_docker_apps_path }}/apps/cloudflared/config:/etc/cloudflared
     command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME}
 {% endif %}
 
