@@ -130,7 +130,7 @@
 - name: Register Subdomains with Cloudflare tunnel
   command: docker run -v {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared erisamoe/cloudflared --hostname {{item.cloudflare_subdomain_name}}.{{ cloudflare_tunnel_name }} --name {{ cloudflare_tunnel_name }}
   with_dict: "{{ hms_docker_container_map }}"
-  when: item.cloudflare_subdomain_name and item.cloudflare_subdomain_name != ''
+  when: cloudflare_subdomain_name in item.keys() and item.cloudflare_subdomain_name and item.cloudflare_subdomain_name != ''
 
 - name: Ensure docker-compose.yml file.
   ansible.builtin.template:
