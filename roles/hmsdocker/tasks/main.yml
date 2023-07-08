@@ -96,9 +96,9 @@
     backup: yes
     lstrip_blocks: yes
     trim_blocks: yes
-  vars:
-    cloudflare_tunnel_id: "{{ cloudflare_tunnel_id }}"
-    cloudflare_tunnel_name: "{{ cloudflare_tunnel_name }}"  
+  # vars:
+  #  cloudflare_tunnel_id: "{{ cloudflare_tunnel_id }}"
+  #  cloudflare_tunnel_name: "{{ cloudflare_tunnel_name }}"  
 
 - name: Ensure Cloudflared Tunnel credentials
   ansible.builtin.template:
@@ -109,8 +109,8 @@
     backup: yes
     lstrip_blocks: yes
     trim_blocks: yes
-  vars:
-    cloudflare_tunnel_credentials: "{{ cloudflare_tunnel_credentials }}"
+  # vars:
+  #  cloudflare_tunnel_credentials: "{{ cloudflare_tunnel_credentials }}"
 
 
 - name: Ensure Cloudflared Tunnel certificate
@@ -122,8 +122,8 @@
     backup: yes
     lstrip_blocks: yes
     trim_blocks: yes
-  vars:
-    cloudflare_tunnel_cert: "{{ cloudflare_tunnel_cert }}"
+#   vars:
+#    cloudflare_tunnel_cert: "{{ cloudflare_tunnel_cert }}"
 
 
 - name: Ensure docker-compose.yml file.
