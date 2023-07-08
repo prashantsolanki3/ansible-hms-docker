@@ -905,6 +905,18 @@ services:
     volumes:
       - {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared
     command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME}
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: '{{ container_restart_policy }}'
+    # user: 65534:65534
+    networks:
+      - "traefik_net"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
 {% endif %}
 
 {% if container_enabled_tdarr %}
