@@ -6,7 +6,8 @@ originRequest: # Top-level configuration
 ingress:
 {% for key in hms_docker_container_map %}
 # Check if hms_docker_container_map[key].cloudflare_subdomain_name is defined  
-  {% if hms_docker_container_map[key].cloudflare_subdomain_name != '' %}
+  {% if 'cloudflare_subdomain_name' in hms_docker_container_map and 
+      hms_docker_container_map[key].cloudflare_subdomain_name != '' %}
   - hostname: {{ hms_docker_container_map[key].cloudflare_subdomain_name }}.{{ cloudflare_tunnel_name }}
     service: http://{{ key }}:{{ hms_docker_container_map[key].port }}
   {% endif %}
