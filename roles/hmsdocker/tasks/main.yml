@@ -90,9 +90,9 @@
 - name: Print variables
   ansible.builtin.debug:
     var: cloudflare_tunnel_id
-      {# - cloudflare_tunnel_name
-      - cloudflare_tunnel_credentials
-      - cloudflare_tunnel_cert #}
+    #  - cloudflare_tunnel_name
+    #  - cloudflare_tunnel_credentials
+    #  - cloudflare_tunnel_cert #}
 
 
 - name: Ensure Cloudflared Tunnel config
