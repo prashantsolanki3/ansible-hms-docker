@@ -425,7 +425,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: sonarr
     port: 8989
   radarr:
@@ -435,7 +435,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: radarr
     port: 7878
   bazarr:
@@ -445,7 +445,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: bazarr
     port: 6767
   transmission:
@@ -455,7 +455,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: transmission   
     port: 9091
   portainer:
@@ -465,7 +465,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: oauth2
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: portainer   
     port: 9000 
   overseerr:
@@ -475,7 +475,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: overseerr
     port: 5055
   prowlarr:
@@ -485,7 +485,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: prowlarr
     port: 9696
   requestrr:
@@ -495,7 +495,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: requestrr
     port: 4545
   plex:
@@ -505,7 +505,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: plex
     port: 32400
   tautulli:
@@ -515,7 +515,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: tautulli
     port: 8181
   nzbget:
@@ -525,7 +525,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: nzbget
     port: 6789
   sabnzbd:
@@ -535,7 +535,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
     cloudflare_subdomain_name: sabnzbd
     port: 8080
   authentik:
@@ -545,7 +545,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
   tdarr:
     enabled: yes
     proxy_host_rule: tdarr
@@ -553,7 +553,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
   cloudflared:
     enabled: yes
     proxy_host_rule: cloudflared
@@ -561,7 +561,7 @@ hms_docker_container_map:
     traefik: no
     authentik: no
     authentik_provider_type: proxy
-    expose_to_public: no
+    expose_to_public: yes
 
 plex_transcode_folder: "{{ hms_docker_apps_path }}/plex/transcode_temp" # default: "{{ hms_docker_apps_path }}/plex/transcode_temp"
 tdarr_transcode_folder: "{{ hms_docker_apps_path }}/tdarr/transcode_temp" # default: "{{ hms_docker_apps_path }}/tdarr/transcode_temp"
