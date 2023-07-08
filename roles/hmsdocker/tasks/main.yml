@@ -87,12 +87,6 @@
   - authentik_pgu: "{{ authentik_old_pg_user if authentik_old_pg_user is defined and authentik_old_pg_user != '' else authentik_pg_user }}"
   - authentik_pgdb: "{{ authentik_old_pg_db if authentik_old_pg_db is defined and authentik_old_pg_db != '' else authentik_pg_db }}"
 
-- name: Print variables
-  ansible.builtin.debug:
-    var: cloudflare_tunnel_id
-    #  - cloudflare_tunnel_name
-    #  - cloudflare_tunnel_credentials
-    #  - cloudflare_tunnel_cert #}
 
 
 - name: Ensure Cloudflared Tunnel config
