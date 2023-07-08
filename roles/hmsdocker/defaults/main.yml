@@ -546,7 +546,6 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
-    cloudflare_subdomain_name: authentik
   tdarr:
     enabled: yes
     proxy_host_rule: tdarr
@@ -555,7 +554,6 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
-    cloudflare_subdomain_name: tdarr
   cloudflared:
     enabled: yes
     proxy_host_rule: cloudflared
