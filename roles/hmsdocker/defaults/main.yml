@@ -412,7 +412,7 @@ tautulli_jbops_install_path: "{{ hms_docker_apps_path }}/tautulli/config/jbops"
 #  `expose_to_public`: Enables or disables exposing the container to the public internet via Traefik (removes allowlist restrictions)
 hms_docker_container_map:
   traefik:
-    enabled: yes
+    enabled: no
     proxy_host_rule: traefik
     directory: yes
     traefik: no
@@ -426,6 +426,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: sonarr
+    port: 8989
   radarr:
     enabled: yes
     proxy_host_rule: radarr
@@ -434,6 +436,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: radarr
+    port: 7878
   bazarr:
     enabled: yes
     proxy_host_rule: bazarr
@@ -442,6 +446,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: bazarr
+    port: 6767
   transmission:
     enabled: yes
     proxy_host_rule: transmission
@@ -450,6 +456,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: transmission   
+    port: 9091
   portainer:
     enabled: yes
     proxy_host_rule: portainer
@@ -458,6 +466,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: oauth2
     expose_to_public: no
+    cloudflare_subdomain_name: portainer   
+    port: 9000 
   overseerr:
     enabled: yes
     proxy_host_rule: overseerr
@@ -466,6 +476,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: overseerr
+    port: 5055
   prowlarr:
     enabled: yes
     proxy_host_rule: prowlarr
@@ -474,6 +486,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: prowlarr
+    port: 9696
   requestrr:
     enabled: yes
     proxy_host_rule: requestrr
@@ -482,6 +496,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: requestrr
+    port: 4545
   plex:
     enabled: yes
     proxy_host_rule: plex
@@ -490,6 +506,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: plex
+    port: 32400
   tautulli:
     enabled: yes
     proxy_host_rule: tautulli
@@ -498,6 +516,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: tautulli
+    port: 8181
   nzbget:
     enabled: no
     proxy_host_rule: nzbget
@@ -506,6 +526,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: nzbget
+    port: 6789
   sabnzbd:
     enabled: no
     proxy_host_rule: sabnzbd
@@ -514,6 +536,8 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: sabnzbd
+    port: 8080
   authentik:
     enabled: no
     proxy_host_rule: authentik
@@ -522,6 +546,7 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: authentik
   tdarr:
     enabled: yes
     proxy_host_rule: tdarr
@@ -530,6 +555,7 @@ hms_docker_container_map:
     authentik: no
     authentik_provider_type: proxy
     expose_to_public: no
+    cloudflare_subdomain_name: tdarr
   cloudflared:
     enabled: yes
     proxy_host_rule: cloudflared
