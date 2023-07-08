@@ -895,6 +895,7 @@ services:
     image: erisamoe/cloudflared
     container_name: cloudflare-tunnel
     restart: '{{ container_restart_policy }}'
+    user: root
     networks:
       - "traefik_net"
     logging:
