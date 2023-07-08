@@ -132,8 +132,8 @@
   with_dict: "{{ hms_docker_container_map }}"
   when: item.value.cloudflare_subdomain_name is defined and item.value.cloudflare_subdomain_name and item.value.cloudflare_subdomain_name != ''
 
-- name: Stop and Remove Cloudflare registration containers
-  command: docker stop {{item.value.cloudflare_subdomain_name}} && docker rm {{item.value.cloudflare_subdomain_name}}
+- name: Stop Cloudflare registration containers
+  command: docker stop {{item.value.cloudflare_subdomain_name}}
   with_dict: "{{ hms_docker_container_map }}"
   when: item.value.cloudflare_subdomain_name is defined and item.value.cloudflare_subdomain_name and item.value.cloudflare_subdomain_name != ''
 
