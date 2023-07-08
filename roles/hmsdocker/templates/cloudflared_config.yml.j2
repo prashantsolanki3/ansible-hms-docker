@@ -12,7 +12,7 @@ ingress:
 {#-    service: http://{{ key }}:{{ hms_docker_container_map[key].port }} #}
 {#-   {% endif %} #}
 {#- {% endfor %} #}
-  - hotname: nginx.{{ cloudflare_tunnel_name }}
+  - hostname: nginx.{{ cloudflare_tunnel_name }}
     service: http://nginx:80
   - service: http_status:404
 
