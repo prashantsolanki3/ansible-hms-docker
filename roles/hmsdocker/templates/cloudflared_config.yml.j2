@@ -1,5 +1,5 @@
 tunnel: {{ cloudflare_tunnel_id }}
-credentials-file: /etc/cloudflared/{{ cloudflare_tunnel_id }}.json
+credentials-file: ./{{ cloudflare_tunnel_id }}.json
 originRequest: # Top-level configuration
   connectTimeout: 30s
 
