@@ -904,7 +904,7 @@ services:
         max-size: 10m
     volumes:
       - {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared
-    command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME}
+    command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME} & id
 {% endif %}
 
 {% if container_enabled_tdarr %}
