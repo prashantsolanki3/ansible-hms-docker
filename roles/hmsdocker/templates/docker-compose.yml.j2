@@ -892,7 +892,7 @@ services:
 {% if cloudflare_tunnel_enabled and cloudflare_tunnel_name != "" %}
   # Cloudflare Tunnel container
   cloudflare-tunnel:
-    image: erisamoe/cloudflared
+    image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     restart: '{{ container_restart_policy }}'
     # user: 65534:65534
