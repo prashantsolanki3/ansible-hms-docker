@@ -887,6 +887,7 @@ services:
       options:
         max-size: 10m
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    network_mode: host
 {% endif %}
 
 {% if cloudflare_tunnel_enabled and cloudflare_tunnel_name != "" %}
@@ -905,6 +906,7 @@ services:
     volumes:
       - {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared
     command: tunnel --no-autoupdate run ${CLOUDFLARE_TUNNEL_NAME}
+    network_mode: host
 
   nginx:
     image: nginx:latest
