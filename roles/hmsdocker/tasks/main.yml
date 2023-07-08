@@ -128,14 +128,21 @@
 #    cloudflare_tunnel_cert: "{{ cloudflare_tunnel_cert }}"
 
 - name: Register Subdomains with Cloudflare tunnel
-  command: docker run --name {{item.value.cloudflare_subdomain_name}} -d -v {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared erisamoe/cloudflared --hostname {{item.value.cloudflare_subdomain_name}}.{{ cloudflare_tunnel_name }} --name {{ cloudflare_tunnel_name }}
+  command: docker run -d -v {{ hms_docker_apps_path }}/cloudflared/config:/etc/cloudflared erisamoe/cloudflared --hostname {{item.value.cloudflare_subdomain_name}}.{{ cloudflare_tunnel_name }} --name {{ cloudflare_tunnel_name }}
   with_dict: "{{ hms_docker_container_map }}"
   when: item.value.cloudflare_subdomain_name is defined and item.value.cloudflare_subdomain_name and item.value.cloudflare_subdomain_name != ''
 
-- name: Stop Cloudflare registration containers
-  command: docker stop {{item.value.cloudflare_subdomain_name}}
-  with_dict: "{{ hms_docker_container_map }}"
-  when: item.value.cloudflare_subdomain_name is defined and item.value.cloudflare_subdomain_name and item.value.cloudflare_subdomain_name != ''
+# - name: Stop Cloudflare registration containers
+#  command: docker stop {{item.value.cloudflare_subdomain_name}}
+#  with_dict: "{{ hms_docker_container_map }}"
+#  when: item.value.cloudflare_subdomain_name is defined and item.value.cloudflare_subdomain_name and item.value.cloudflare_subdomain_name != ''
+- name: Stop all running Docker containers
+  community.general.docker_container:
+    state: stopped
+
+- name: Remove all stopped Docker containers
+  community.general.docker_container:
+    state: absent
 
 - name: Ensure docker-compose.yml file.
   ansible.builtin.template:
